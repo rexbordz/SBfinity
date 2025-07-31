@@ -46,7 +46,7 @@
 
 ## 🎯 Included Custom Triggers
 
-These trigger names are added automatically via the import:
+These trigger names are added automatically via the import. They can be found in `Custom > SBfinity (TikTok)`:
 
 - `Chat`
 - `Gift Received`
@@ -65,7 +65,7 @@ These trigger names are added automatically via the import:
 ## ❤️ Credits
 
 - **[Streamer.bot](https://streamer.bot)** – created by [nate1820](https://github.com/nate1280)
-- **[TikFinity (TLC)](https://github.com/zerodytrash/TikFinity)** – by [zerodytrash](https://github.com/zerodytrash)
+- **[TikFinity](https://tikfinity.zerody.one/app/)** – by [zerodytrash](https://github.com/zerodytrash)
 
 Big thanks to the creators of both tools. SBfinity is built entirely on top of their work.
 

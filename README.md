@@ -37,7 +37,7 @@ SBfinity is a lightweight browser-based integration that connects [Streamer.bot]
 4. **Add the Browser Source in OBS (or any broadcasting software you use that allows adding a browser source)**
    - Add this URL as a **browser source** in OBS to any scene:
      ```
-     https://rexbordz.github.io/sbfinity/
+     https://rexbordz.github.io/SBfinity/
      ```
      This source is invisible, so you don't need to worry about which scene to add to. As long as it is added and enabled, it continually listens for TikTok events.
    - ❌ DO NOT enable `Shutdown source when not visible` or else it will cause some problems.

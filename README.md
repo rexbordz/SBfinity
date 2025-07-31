@@ -60,7 +60,7 @@ These trigger names are added automatically via the import. They can be found in
 - `Pinned Message`
 - `Tikfinity Connected` - triggers when TikFinity has successfully connected to your TikTok stream
 - `Tikfinity Disconnected` -triggers when TikFinity gets disconnected from your TikTok stream
-- `tikfinity.streamEnd`
+- `Stream Ended`
 
 ---
 

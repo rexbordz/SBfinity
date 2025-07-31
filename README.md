@@ -2,7 +2,7 @@
 
 SBfinity is a lightweight browser-based integration that connects [Streamer.bot](https://streamer.bot) and [TikFinity](https://tikfinity.zerody.one/app/) in real time. It listens to TikTok events via TikFinity and triggers **Custom Triggers** inside Streamer.bot — making it easy for streamers to handle TikTok events using their familiar Streamer.bot setup.
 
-> ⚠️ **Note:** SBfinity does **not** replace TikFinity’s built-in automation. It’s made for creators who prefer working entirely from Streamer.bot, and it only supports limited basic events.
+> ⚠️ > ⚠️ **Note:** SBfinity does **not** replace TikFinity’s built-in automation features. It simply exposes basic TikTok event triggers to **Streamer.bot** as custom triggers. SBfinity cannot execute TikFinity’s internal actions — it’s designed only for streamers who prefer handling all logic and effects from within Streamer.bot.
 
 ---
 

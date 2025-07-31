@@ -1,0 +1,50 @@
+body {
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  font-family: sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+/* Lock each box's position in layout */
+.status-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Common box styles */
+.status-box {
+  padding: 14px 20px;
+  border-radius: 8px;
+  font-size: 18px;
+  font-weight: bold;
+  width: 280px;
+  text-align: center;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+/* Waiting: Red */
+.waiting {
+  background-color: #dc3545;
+  color: white;
+}
+
+/* Connected: Green */
+.connected {
+  background-color: #28a745;
+  color: white;
+}
+
+/* Fade/Hide */
+.fade-out {
+  opacity: 0;
+}
+
+.hidden {
+  display: none;
+}

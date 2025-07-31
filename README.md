@@ -19,9 +19,10 @@
 
 2. **Open Streamer.bot**
    - Make sure WebSocket Server is **enabled**:
-     - Go to `Streamer.bot > Settings > Websocket Server`.
-     - ✅ Check **Enable Websocket Server**
-     - No need to change host or port (keep default `ws://localhost:8080`)
+     - Go to `Streamer.bot > Servers/Clients > WebSocket Server` 
+     - Click `Start Server`
+     - It is also recommended that `✅ Auto Start WebSocket Server` is checked.
+     - No need to change address or port (keep default)
 
 3. **Import Custom Triggers**
    - In Streamer.bot, click `Import` and paste this:

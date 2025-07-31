@@ -54,7 +54,11 @@ function updateStatusBoxes() {
 
 // Streamer.Bot setup
 function connectStreamerbotClient() {
-  sbClient = new StreamerbotClient(); // ✅ declare sbClient globally!
+  sbClient = new StreamerbotClient({
+  host: "ws://localhost:8080",
+  plugin: "sbfinity",
+  });
+ // ✅ declare sbClient globally!
 
   sbClient.socket.onopen = () => {
     if (!streamerbotConnected) {

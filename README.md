@@ -36,6 +36,7 @@
      ```
      https://rexbordz.github.io/sbfinity/
      ```
+     This source is invisible, so you don't need to worry about which scene to add to. As long as it is added and enabled, it continually listens for TikTok events.
    - ❌ DO NOT enable `Shutdown source when not visible` or else it will cause some problems.
 
 5. ✅ You're all set!

@@ -54,12 +54,7 @@ function updateStatusBoxes() {
 
 // Streamer.Bot setup
 function connectStreamerbotClient() {
-  sbClient = new StreamerbotClient({
-  host: "127.0.0.1",
-  port: "8080",
-  plugin: "sbfinity",
-  });
-
+  sbClient = new StreamerbotClient();
   sbClient.socket.onopen = () => {
     if (!streamerbotConnected) {
       streamerbotConnected = true;

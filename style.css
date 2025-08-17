@@ -1,50 +1,121 @@
-body {
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+body{
+  font-family: 'Poppins', sans-serif;
   margin: 0;
-  padding: 0;
-  background: transparent;
-  font-family: sans-serif;
+  min-height: 100 vh;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  height: 100vh;
+  align-items: center;
+  background-color: #1C1D22;
 }
 
-/* Lock each box's position in layout */
-.status-container {
+button{
+  padding: 10px;
+}
+
+.notifications{
+  position: fixed;
+  top: 30px;
+  right: 20px;
+}
+
+.toast{
+  position: relative;
+  padding: 10px;
+  color: #fff;
+  margin-bottom: 10px;
+  max-width: 500px;
+  display: grid;
+  grid-template-columns: 70px 1fr 70px;
+  border-radius: 5px;
+  --color: #0abf30;
+  background-image: 
+      linear-gradient(
+          to right, #0abf3055, #22242f 30%
+      ); 
+  animation: show 0.3s ease 1 forwards  
+}
+
+.toast i{
+  color: var(--color);
   display: flex;
-  flex-direction: column;
-  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  font-size: x-large;
 }
 
-/* Common box styles */
-.status-box {
-  padding: 14px 20px;
-  border-radius: 8px;
-  font-size: 18px;
+.toast .title{
+  font-size: x-large;
   font-weight: bold;
-  width: 280px;
-  text-align: center;
-  transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
-/* Waiting: Red */
-.waiting {
-  background-color: #dc3545;
-  color: white;
+.toast span, .toast i:nth-child(3){
+  color: #fff;
+  opacity: 0.6;
 }
 
-/* Connected: Green */
-.connected {
-  background-color: #28a745;
-  color: white;
+@keyframes show{
+  0%{
+      transform: translateX(100%);
+  }
+  40%{
+      transform: translateX(-5%);
+  }
+  80%{
+      transform: translateX(0%);
+  }
+  100%{
+      transform: translateX(-10%);
+  }
 }
 
-/* Fade/Hide */
-.fade-out {
-  opacity: 0;
+.toast::before{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background-color: var(--color);
+  width: 100%;
+  height: 3px;
+  content: '';
+  box-shadow: 0 0 10px var(--color);
+  animation: timeOut 3s linear 1 forwards
 }
 
-.hidden {
-  display: none;
+@keyframes timeOut{
+  100%{
+      width: 0;
+  }
+}
+
+.toast.error{
+  --color: #f24d4c;
+  background-image: 
+      linear-gradient(
+          to right, #f24d4c55, #22242F 30%
+      );
+}
+
+.toast.warning{
+  --color: #e9bd0c;
+  background-image: 
+      linear-gradient(
+          to right, #e9bd0c55, #22242F 30%
+      );
+}
+
+.toast.info{
+  --color: #3498db;
+  background-image: 
+      linear-gradient(
+          to right, #3498db55, #22242F 30%
+      );
+}
+
+.toast-logo {
+width: 28px;   /* adjust */
+height: 28px;
+object-fit: contain;
+display: block;
+margin: auto;
 }

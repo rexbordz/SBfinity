@@ -1,77 +1,38 @@
+// Settings configuration
+const urlParams = new URLSearchParams(window.location.search);
+const sbAddress = urlParams.get("address") || "127.0.0.1";
+const sbPort = urlParams.get("port") || "8080";
+
+// Global variables
+const streamerbot = "streamerbot";
+const tikfinity = "tikfinity";
+const sbfinity = "SBfinity";
 let streamerbotConnected = false;
 let tikfinityConnected = false;
-
-// Global sbClient so we can use it in other functions too
-let sbClient = null;
-
-// DOM elements
-const waitingSB = document.getElementById("waiting-streamerbot");
-const successSB = document.getElementById("success-streamerbot");
-const waitingTF = document.getElementById("waiting-tikfinity");
-const successTF = document.getElementById("success-tikfinity");
-
-// Show green box and hide red box
-function showSuccess(source) {
-  if (source === "streamerbot") {
-    waitingSB.classList.add("fade-out");
-    setTimeout(() => {
-      waitingSB.classList.add("hidden");
-      successSB.classList.remove("hidden", "fade-out");
-
-      // Fade green box after 2 seconds
-      setTimeout(() => {
-        successSB.classList.add("fade-out");
-      }, 2000);
-    }, 500);
-  }
-
-  if (source === "tikfinity") {
-    waitingTF.classList.add("fade-out");
-    setTimeout(() => {
-      waitingTF.classList.add("hidden");
-      successTF.classList.remove("hidden", "fade-out");
-
-      // Fade green box after 2 seconds
-      setTimeout(() => {
-        successTF.classList.add("fade-out");
-      }, 2000);
-    }, 500);
-  }
-}
-
-// Reset layout if disconnected
-function updateStatusBoxes() {
-  if (!streamerbotConnected) {
-    waitingSB.classList.remove("hidden", "fade-out");
-    successSB.classList.add("hidden");
-  }
-
-  if (!tikfinityConnected) {
-    waitingTF.classList.remove("hidden", "fade-out");
-    successTF.classList.add("hidden");
-  }
-}
+let notifications = document.querySelector('.notifications');
 
 // Streamer.Bot setup
-function connectStreamerbotClient() {
-  sbClient = new StreamerbotClient();
-  sbClient.socket.onopen = () => {
-    if (!streamerbotConnected) {
-      streamerbotConnected = true;
-      console.log("✅ Connected to Streamer.Bot");
-      showSuccess("streamerbot");
-    }
-  };
+const sbClient = new StreamerbotClient({
+  host: sbAddress,
+  port: sbPort,
 
-  sbClient.socket.onclose = () => {
-    if (streamerbotConnected) {
-      console.warn("❌ Disconnected from Streamer.Bot");
+  onConnect: (data) => {
+    if (!streamerbotConnected){
+      streamerbotConnected = true;
+      console.log(`✅ Streamer.bot connected to ${sbAddress}:${sbPort}`)
+      console.debug(data);
+      createToast('success', 'fa-solid fa-circle-check', sbfinity, 'Connected to Streamer.bot', streamerbot);
     }
-    streamerbotConnected = false;
-    updateStatusBoxes();
-    setTimeout(connectStreamerbotClient, 2000);
-  };
-}
+  },
+
+  onDisconnect: () => {
+    if (streamerbotConnected) {
+      streamerbotConnected = false;
+      console.warn("❌ Streamer.bot disconnected");
+      createToast('warning', 'fa-solid fa-triangle-exclamation', sbfinity, 'Disconnected from Streamer.bot', streamerbot);
+    }  
+  }
+});
 
 // TikFinity setup
 function connectTikFinity() {
@@ -81,17 +42,17 @@ function connectTikFinity() {
     if (!tikfinityConnected) {
       tikfinityConnected = true;
       console.log("✅ Connected to TikFinity");
-      showSuccess("tikfinity");
+      createToast('success', 'fa-solid fa-circle-check', sbfinity, 'Connected to Tikfinity', tikfinity);
     }
   };
 
   socket.onclose = () => {
     if (tikfinityConnected) {
+      tikfinityConnected = false;
       console.warn("❌ Disconnected from TikFinity");
+      createToast('warning', 'fa-solid fa-triangle-exclamation', sbfinity, 'Disconnected from Tikfinity', tikfinity);
     }
-    tikfinityConnected = false;
-    updateStatusBoxes();
-    setTimeout(connectTikFinity, 2000);
+    setTimeout(connectTikFinity, 3000);
   };
 
   socket.onerror = (err) => {
@@ -190,6 +151,30 @@ function connectTikFinity() {
   };
 }
 
+// Toast notifications for connections
+function createToast(type, icon, title, text, source){
+    let newToast = document.createElement('div');
+    let logo;
+    if (source === "streamerbot") {
+        logo = 'assets/images/streamerbot-logo.png';
+    } else if (source === "tikfinity") {
+        logo = "assets/images/tikfinity-logo.png";
+    }
+
+    newToast.innerHTML = `
+        <div class="toast ${type}">
+            <i class="${icon}"></i>
+            <div class="content">
+                <div class="title">${title}</div>
+                <span>${text}</span>
+            </div>
+            <img class="toast-logo" src="${logo}" alt="${source} logo">
+        </div>`;
+    notifications.appendChild(newToast);
+    newToast.timeOut = setTimeout(
+        ()=>newToast.remove(), 3000
+    )
+}
+
 // Run both
-connectStreamerbotClient();
 connectTikFinity();

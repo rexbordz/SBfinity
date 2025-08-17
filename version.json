@@ -1,5 +1,6 @@
 {
   "name": "SBfinity",
   "latestVersion": "1.1.0",
-  "changelog": "Updated UI, custom address and port option for Streamer.bot, and removed some non-working triggers."
+  "changelog": "Updated UI, custom address and port option for Streamer.bot, and removed some non-working triggers.",
+  "downloadUrl": "https://www.notion.so/SBfinity-241088f4f93e80028773ff595fa0d5fa"
 }

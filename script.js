@@ -121,20 +121,6 @@ function connectTikFinity() {
           break;
         }
 
-        case "connected": {
-          const connected = data.data;
-          console.log('Tikfinity has successfully connected to your TikTok LIVE!');
-          sbClient.executeCodeTrigger("tikfinity.connected", connected);
-          break;
-        }
-
-        case "disconnected": {
-          const disconnected = data.data;
-          console.log('Oh no! Tikfinity got disconnected from your TikTok LIVE.');
-          sbClient.executeCodeTrigger("tikfinity.disconnected", disconnected);
-          break;
-        }
-
         case "streamEnd": {
           const streamEnd = data.data;
           console.log('Stream Ended.');
@@ -176,5 +162,4 @@ function createToast(type, icon, title, text, source){
     )
 }
 
-// Run both
 connectTikFinity();

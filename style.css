@@ -30,10 +30,7 @@ button{
   grid-template-columns: 70px 1fr 70px;
   border-radius: 5px;
   --color: #0abf30;
-  background-image: 
-      linear-gradient(
-          to right, #0abf3055, #22242f 30%
-      ); 
+  background: #202022;
   animation: show 0.3s ease 1 forwards  
 }
 
@@ -90,26 +87,17 @@ button{
 
 .toast.error{
   --color: #f24d4c;
-  background-image: 
-      linear-gradient(
-          to right, #f24d4c55, #22242F 30%
-      );
+  background: #202022;
 }
 
 .toast.warning{
   --color: #e9bd0c;
-  background-image: 
-      linear-gradient(
-          to right, #e9bd0c55, #22242F 30%
-      );
+  background: #202022;
 }
 
 .toast.info{
   --color: #3498db;
-  background-image: 
-      linear-gradient(
-          to right, #3498db55, #22242F 30%
-      );
+  background: #202022;
 }
 
 .toast-logo {

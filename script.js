@@ -19,7 +19,7 @@ const sbClient = new StreamerbotClient({
   onConnect: (data) => {
     if (!streamerbotConnected){
       streamerbotConnected = true;
-      console.log(`✅ Streamer.bot connected to ${sbAddress}:${sbPort}`)
+      console.debug(`✅ Streamer.bot connected to ${sbAddress}:${sbPort}`)
       console.debug(data);
       createToast('success', 'fa-solid fa-circle-check', sbfinity, 'Connected to Streamer.bot', streamerbot);
     }
@@ -62,61 +62,62 @@ function connectTikFinity() {
   socket.onmessage = (event) => {
     try {
       const data = JSON.parse(event.data);
+      
 
       switch (data.event) {
         case "gift": {
           const gift = data.data;
           if (gift.giftType === 1 && !gift.repeatEnd) return;
-          console.log(`${gift.nickname || gift.uniqueId} sent ${gift.giftName} x${gift.repeatCount}`);
+          console.debug(`${gift.nickname || gift.uniqueId} sent ${gift.giftName} x${gift.repeatCount}`);
           sbClient.executeCodeTrigger("tikfinity.gift", gift);
           break;
         }
 
         case "follow": {
           const follow = data.data;
-          console.log(`${follow.nickname || follow.uniqueId} followed!`);
+          console.debug(`${follow.nickname || follow.uniqueId} followed!`);
           sbClient.executeCodeTrigger("tikfinity.follow", follow);
           break;
         }
 
         case "subscribe": {
           const sub = data.data;
-          console.log(`${sub.nickname || sub.uniqueId} subscribed!`);
+          console.debug(`${sub.nickname || sub.uniqueId} subscribed!`);
           sbClient.executeCodeTrigger("tikfinity.subscribe", sub);
           break;
         }
 
         case "like": {
           const like = data.data;
-          console.log(`${like.nickname || like.uniqueId} sent ${like.likeCount} likes`);
+          console.debug(`${like.nickname || like.uniqueId} sent ${like.likeCount} likes`);
           sbClient.executeCodeTrigger("tikfinity.like", like);
           break;
         }
 
         case "share": {
           const share = data.data;
-          console.log(`${share.nickname || share.uniqueId} shared the stream!`);
+          console.debug(`${share.nickname || share.uniqueId} shared the stream!`);
           sbClient.executeCodeTrigger("tikfinity.share", share);
           break;
         }
 
         case "chat": {
           const chat = data.data;
-          console.log(`${chat.nickname || chat.uniqueId} ➝ ${chat.comment}`);
+          console.debug(`${chat.nickname || chat.uniqueId} ➝ ${chat.comment}`);
           sbClient.executeCodeTrigger("tikfinity.chat", chat);
           break;
         }
 
         case "envelope": {
           const envelope = data.data;
-          console.log('envelope received', data);
+          console.debug('envelope received', data);
           sbClient.executeCodeTrigger("tikfinity.envelope", envelope);
           break;
         }
 
         case "roomPin": {
           const roomPin = data.data;
-          console.log('A message has been pinned.');
+          console.debug('A message has been pinned.');
           sbClient.executeCodeTrigger("tikfinity.roomPin", roomPin);
           break;
         }

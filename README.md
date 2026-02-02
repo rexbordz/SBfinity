@@ -16,7 +16,7 @@ If you need help setting this up, visit their [website](https://streamer.bot/).
 You need this to be able to listen to TikTok events. If you need help setting this up, you can check out my [Tikfinity Setup Guide](https://www.notion.so/Tikfinity-Setup-Guide-241088f4f93e8051b991c6ef4b659934?pvs=21).
 
 ⬆️ **rexbordz.dll (Optional but recommended)** <br>
-Downloading rexbordz.dll file is highly recommended  to make sure you get notified with the latest Streamer.bot action update. [Download here!](https://github.com/rexbordz/rexbordz-dll/releases/tag/v1.0.0)
+Downloading rexbordz.dll file is highly recommended  to make sure you get notified with the latest Streamer.bot action update. [Download here!](https://github.com/rexbordz/SBfinity/releases/tag/1.0.0)
 
 ---
 

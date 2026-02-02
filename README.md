@@ -3,10 +3,7 @@
 > [!NOTE]
 > SBfinity does not replace TikFinity’s built-in automation features. It simply exposes basic TikTok event triggers to Streamer.bot as custom triggers. SBfinity cannot execute TikFinity’s internal actions — it’s designed only for streamers who prefer handling all logic and effects from within Streamer.bot.
 
-<aside>
-⬆️ **UPDATE INSTRUCTIONS:** If you got prompted to update your SBfinity, just reimport the action [here](https://www.notion.so/SBfinity-241088f4f93e80028773ff595fa0d5fa?pvs=21). If you are freshly installing SBfinity, just follow the instructions below.
-
-</aside>
+⬆️ **UPDATE INSTRUCTIONS:** If you got prompted to update your SBfinity, just reimport the action [here](#import-custom-triggers). If you are freshly installing SBfinity, just follow the instructions below.
 
 ---
 
@@ -36,7 +33,8 @@ Downloading rexbordz.dll file is highly recommended  to make sure you get notifi
     <img width="998" height="693" alt="image" src="https://github.com/user-attachments/assets/19ed030d-34df-4e49-b9a3-87bd90737a73" />
 
     No need to change address or port unless you really want to for some reason. You can check the [Custom Settings](https://www.notion.so/SBfinity-241088f4f93e80028773ff595fa0d5fa?pvs=21) section if you want to connect to a custom address or port.
-    
+
+<a name="import-custom-triggers></a>
 3. **Import Custom Triggers**
     - In Streamer.bot, click `Import` and paste this:
         

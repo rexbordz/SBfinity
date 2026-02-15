@@ -1,3 +1,5 @@
+import { allowedGifts } from "./giftList.js";
+
 // Settings configuration
 const urlParams = new URLSearchParams(window.location.search);
 const sbAddress = urlParams.get("address") || "127.0.0.1";
@@ -67,9 +69,30 @@ function connectTikFinity() {
       switch (data.event) {
         case "gift": {
           const gift = data.data;
+          // TikTok streak handling
           if (gift.giftType === 1 && !gift.repeatEnd) return;
-          console.debug(`${gift.nickname || gift.uniqueId} sent ${gift.giftName} x${gift.repeatCount}`);
+
+          // ⭐ ALWAYS fire general gift trigger
           sbClient.executeCodeTrigger("tikfinity.gift", gift);
+          
+          const rawName = gift.giftName || "";
+
+          // ⭐ Step 1 — Check Allowed List
+          const setKey = normalizeGiftForSet(rawName);
+          if (!allowedGifts.has(setKey)) return;
+
+          // ⭐ Step 2 — Build Trigger Name
+          const normalized = normalizeGiftTriggerName(rawName);
+          const amount = gift.diamondCount;
+
+          const eventName = `tikfinity.gift.${normalized}_${amount}`;
+
+          console.debug(
+            `${gift.nickname || gift.uniqueId} sent ${rawName} (${amount})`
+          );
+
+          sbClient.executeCodeTrigger(eventName, gift);
+
           break;
         }
 
@@ -161,6 +184,19 @@ function createToast(type, icon, title, text, source){
     newToast.timeOut = setTimeout(
         ()=>newToast.remove(), 3000
     )
+}
+
+function normalizeGiftTriggerName(name = "") {
+  return name
+    .toLowerCase()
+    .trim()
+    .replace(/\+/g, " plus ")
+    .replace(/[^a-z0-9]+/g, "_")
+    .replace(/^_+|_+$/g, "");
+}
+
+function normalizeGiftForSet(name = "") {
+  return name.toLowerCase().trim();
 }
 
 connectTikFinity();

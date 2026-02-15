@@ -3,7 +3,7 @@
 > [!NOTE]
 > SBfinity does not replace TikFinity’s built-in automation features. It simply exposes basic TikTok event triggers to Streamer.bot as custom triggers. SBfinity cannot execute TikFinity’s internal actions — it’s designed only for streamers who prefer handling all logic and effects from within Streamer.bot.
 
-⬆️ **UPDATE INSTRUCTIONS:** If you got prompted to update your SBfinity, just reimport the action [here](#-installation). If you are freshly installing SBfinity, just follow the instructions below.
+⬆️ **UPDATE INSTRUCTIONS:** If you got prompted to update your SBfinity, just reimport the action [here](https://github.com/rexbordz/SBfinity/blob/main/sbfinity.sb). If you are freshly installing SBfinity, just follow the instructions below.
 
 ---
 

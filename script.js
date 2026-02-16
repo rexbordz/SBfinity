@@ -110,6 +110,13 @@ function connectTikFinity() {
           break;
         }
 
+        case "superFan": {
+          const sub = data.data;
+          console.debug(`${sub.nickname || sub.uniqueId} became a super fan!`);
+          sbClient.executeCodeTrigger("tikfinity.superfan", sub);
+          break;
+        }
+
         case "like": {
           const like = data.data;
           console.debug(`${like.nickname || like.uniqueId} sent ${like.likeCount} likes`);
@@ -137,6 +144,7 @@ function connectTikFinity() {
           sbClient.executeCodeTrigger("tikfinity.envelope", envelope);
           break;
         }
+
 
         case "roomPin": {
           const roomPin = data.data;

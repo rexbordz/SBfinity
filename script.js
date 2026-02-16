@@ -112,7 +112,7 @@ function connectTikFinity() {
 
         case "superFan": {
           const sub = data.data;
-          console.debug(`${sub.nickname || sub.uniqueId} became a super fan!`);
+          console.debug(`${sub.nickname || sub.uniqueId} became a super fan!`, sub);
           sbClient.executeCodeTrigger("tikfinity.superfan", sub);
           break;
         }

@@ -1,6 +1,8 @@
 {
   "name": "SBfinity",
-  "latestVersion": "1.2.0",
-  "changelog": "Added available gifts in the Philippines to the custom triggers",
+  "latestVersion": "1.3.0",
+  "changelog": [
+    "Added available dynamic regional gifts in the custom trigger"
+  ],
   "downloadUrl": "https://github.com/rexbordz/SBfinity/blob/main/sbfinity.sb"
 }

@@ -1,5 +1,3 @@
-import { allowedGifts } from "./giftList.js";
-
 // Settings configuration
 const urlParams = new URLSearchParams(window.location.search);
 const sbAddress = urlParams.get("address") || "127.0.0.1";
@@ -35,6 +33,31 @@ const sbClient = new StreamerbotClient({
     }  
   }
 });
+
+// sbClient.on('Custom.CodeEvent', (payload) => {
+//   const eventName = payload.data.eventName;
+//   if (eventName === "TikTokChatMessage") {
+//     console.log("CHAT PAYLOAD:", payload);
+//   } else {
+//     console.debug("FULL PAYLOAD:", payload);
+//   }
+//   // console.log('Custom.CodeEvent payload:', payload);
+// });
+
+// sbClient.on('Custom.CodeEvent', (payload) => {
+//   console.debug("FULL PAYLOAD:", payload);
+//   // console.log('Custom.CodeEvent payload:', payload);
+// });
+
+// sbClient.on("General.Custom", (payload) => {
+//   const eventName = payload.data.eventName;
+//   if (eventName === "TikTokChatMessage") {
+//     console.log("CHAT PAYLOAD:", payload);
+//   } else {
+//     console.debug("FULL PAYLOAD:", payload);
+//   }
+// });
+
 
 // TikFinity setup
 function connectTikFinity() {
@@ -75,24 +98,32 @@ function connectTikFinity() {
           // ⭐ ALWAYS fire general gift trigger
           sbClient.executeCodeTrigger("tikfinity.gift", gift);
           
-          const rawName = gift.giftName || "";
+          // const rawName = gift.giftName || "";
 
-          // ⭐ Step 1 — Check Allowed List
-          const setKey = normalizeGiftForSet(rawName);
-          if (!allowedGifts.has(setKey)) return;
+          // // ⭐ Step 1 — Check Allowed List
+          // const setKey = normalizeGiftForSet(rawName);
+          // if (!allowedGifts.has(setKey)) return;
 
           // ⭐ Step 2 — Build Trigger Name
-          const normalized = normalizeGiftTriggerName(rawName);
-          const amount = gift.diamondCount;
+          // const normalized = normalizeGiftTriggerName(rawName);
+          // const amount = gift.diamondCount;
 
-          const eventName = `tikfinity.gift.${normalized}_${amount}`;
+          // const eventName = `tikfinity.gift.${normalized}_${amount}`;
+
+          
+
+          sbClient.executeCodeTrigger(`TikTokGift_${gift.giftId}`, gift);
 
           console.debug(
-            `${gift.nickname || gift.uniqueId} sent ${rawName} (${amount})`
+            `${gift.nickname || gift.uniqueId} sent ${gift.giftName} [${gift.giftId}] (${gift.diamondCount})`
           );
 
-          sbClient.executeCodeTrigger(eventName, gift);
-
+          break;
+        }
+        case "connected": {
+          const connected = data;
+          console.debug("SBfinity successfully connected to the live stream!");
+          sbClient.executeCodeTrigger("tikfinity.connected", connected);
           break;
         }
 
@@ -119,7 +150,7 @@ function connectTikFinity() {
 
         case "like": {
           const like = data.data;
-          console.debug(`${like.nickname || like.uniqueId} sent ${like.likeCount} likes`);
+          console.debug(`${like.nickname || like.uniqueId} sent ${like.likeCount} likes`, like);
           sbClient.executeCodeTrigger("tikfinity.like", like);
           break;
         }
@@ -133,7 +164,7 @@ function connectTikFinity() {
 
         case "chat": {
           const chat = data.data;
-          console.debug(`${chat.nickname || chat.uniqueId} ➝ ${chat.comment}`);
+          console.debug("New Chat:", chat);
           sbClient.executeCodeTrigger("tikfinity.chat", chat);
           break;
         }

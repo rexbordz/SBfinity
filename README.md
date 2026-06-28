@@ -182,7 +182,3 @@ For technical support or inquiries, please contact me through my Discord channel
 - <img src="https://github.com/user-attachments/assets/99e66009-11f1-4bcc-a06f-aa5c2f90524a" style="height: 1.5em;"> **[Discord Server]([https://discord.gg/cgufFBJKY7])**
 
     You can ask questions in the [Discord Server](https://discord.gg/cgufFBJKY7).
-    
-- 🐞 **Bug Reports**
-    
-    Post any bug reports in the [#🐞│bug-reports channel](https://discord.com/channels/789352409473875988/1317386476501205044) in my discord page
